@@ -28,3 +28,13 @@ variable "vpc_name" {
   default     = "f5-1arm-vpc"
   description = "The name of your VPC where F5-BIGIP VSI is to be provisioned."
 }
+
+variable "resource_group" {
+  default     = "Default"
+  description = "The resource group to use. If unspecified, the account's default resource group is used."
+}
+
+variable "region" {
+  default     = "us-south"
+  description = "The VPC Region that you want your VPC, networks and the F5 virtual server to be provisioned in. To list available regions, run `ibmcloud is regions`."
+}

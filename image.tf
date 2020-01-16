@@ -2,6 +2,14 @@ locals {
   user_acct_id = "${substr(element(split("a/", data.ibm_is_vpc.f5_vpc.resource_crn), 1), 0, 32)}"
 }
 
+data "ibm_is_region" "region" {
+  name = "${var.region}"
+}
+
+data "ibm_resource_group" "rg" {
+  name = "${var.resource_group}"
+}
+
 data "ibm_is_vpc" "f5_vpc" {
   name = "${var.vpc_name}"
 }
@@ -32,7 +40,7 @@ resource "random_uuid" "image_name" {
 resource "ibm_is_image" "f5_custom_image" {
   depends_on       = ["data.external.authorize_policy_for_image", "random_uuid.image_name"]
   href             = "${var.vnf_cos_image_url}"
-  name             = "${var.vnf_vpc_image_name}-${random_uuid.test.result}"
+  name             = "${var.vnf_vpc_image_name}-${random_uuid.image_name.result}"
   operating_system = "centos-7-amd64"
 
   timeouts {
