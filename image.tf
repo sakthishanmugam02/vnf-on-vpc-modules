@@ -2,6 +2,10 @@ locals {
   user_acct_id = "${substr(element(split("a/", data.ibm_is_vpc.f5_vpc.resource_crn), 1), 0, 32)}"
 }
 
+data "ibm_is_vpc" "f5_vpc" {
+  name = "${var.vpc_name}"
+}
+
 data "external" "authorize_policy_for_image" {
   depends_on = ["data.ibm_is_vpc.f5_vpc"]
   program    = ["bash", "${path.module}/scripts/create_auth.sh"]
