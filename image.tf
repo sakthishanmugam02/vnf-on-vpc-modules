@@ -60,3 +60,8 @@ data "external" "delete_auth_policy_for_image" {
     region               = "${data.ibm_is_region.region.name}"
   }
 }
+
+output "custom_image_id" {
+  value       = "${ibm_is_image.f5_custom_image.id}"
+  description = "ID of the custom image copied"
+}
