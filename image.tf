@@ -2,21 +2,8 @@ locals {
   user_acct_id = "${substr(element(split("a/", data.ibm_is_vpc.f5_vpc.resource_crn), 1), 0, 32)}"
 }
 
-data "ibm_is_region" "region" {
-  name = "${var.region}"
-}
-
-data "ibm_resource_group" "rg" {
-  name = "${var.resource_group}"
-}
-
-data "ibm_is_vpc" "f5_vpc" {
-  name = "${var.vpc_name}"
-}
-
 data "external" "authorize_policy_for_image" {
-  depends_on = ["data.ibm_is_vpc.f5_vpc"]
-  program    = ["bash", "${path.module}/scripts/create_auth.sh"]
+  program = ["bash", "${path.module}/scripts/create_auth.sh"]
 
   query = {
     ibmcloud_endpoint           = "${var.ibmcloud_endpoint}"
@@ -28,8 +15,8 @@ data "external" "authorize_policy_for_image" {
     target_resource_type        = "bucket"
     roles                       = "Reader"
     target_resource_instance_id = "${var.vnf_cos_instance_id}"
-    region                      = "${data.ibm_is_region.region.name}"
-    resource_group_id           = "${data.ibm_resource_group.rg.id}"
+    region                      = "${var.region}"
+    resource_group_id           = "${var.resource_group}"
   }
 }
 
