@@ -49,7 +49,7 @@ data "external" "delete_auth_policy_for_image" {
 }
 
 data "ibm_is_image" "f5_custom_image" {
-  name       = "${var.vnf_vpc_image_name}-${random_uuid.test.result}"
+  name       = "${var.vnf_vpc_image_name}-${random_uuid.image_name.result}"
   depends_on = ["ibm_is_image.f5_custom_image"]
 }
 
