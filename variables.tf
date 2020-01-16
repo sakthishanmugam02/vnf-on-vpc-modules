@@ -29,7 +29,7 @@ variable "vpc_name" {
   description = "The name of your VPC where F5-BIGIP VSI is to be provisioned."
 }
 
-variable "resource_group" {
+variable "resource_group_id" {
   default     = ""
   description = "The resource group to use. If unspecified, the account's default resource group is used."
 }
