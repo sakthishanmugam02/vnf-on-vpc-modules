@@ -24,7 +24,7 @@ variable "vnf_vpc_image_name" {
   description = "The name of the F5-BIGIP custom image to be provisioned in your IBM Cloud account."
 }
 
-variable "vpc_name" {
+variable "vpc_crn" {
   default     = ""
   description = "The name of your VPC where F5-BIGIP VSI is to be provisioned."
 }
