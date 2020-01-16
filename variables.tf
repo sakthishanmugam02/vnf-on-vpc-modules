@@ -1,5 +1,5 @@
 variable "ibmcloud_endpoint" {
-  default     = "cloud.ibm.com"
+  default     = ""
   description = "The IBM Cloud environmental variable 'cloud.ibm.com' or 'test.cloud.ibm.com'"
 }
 
@@ -20,21 +20,21 @@ variable "vnf_cos_instance_id" {
 }
 
 variable "vnf_vpc_image_name" {
-  default     = "f5-bigip-15-0-1-0-0-11"
+  default     = ""
   description = "The name of the F5-BIGIP custom image to be provisioned in your IBM Cloud account."
 }
 
 variable "vpc_name" {
-  default     = "f5-1arm-vpc"
+  default     = ""
   description = "The name of your VPC where F5-BIGIP VSI is to be provisioned."
 }
 
 variable "resource_group" {
-  default     = "Default"
+  default     = ""
   description = "The resource group to use. If unspecified, the account's default resource group is used."
 }
 
 variable "region" {
-  default     = "us-south"
+  default     = ""
   description = "The VPC Region that you want your VPC, networks and the F5 virtual server to be provisioned in. To list available regions, run `ibmcloud is regions`."
 }
