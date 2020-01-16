@@ -48,7 +48,12 @@ data "external" "delete_auth_policy_for_image" {
   }
 }
 
+data "ibm_is_image" "f5_custom_image" {
+  name       = "${var.vnf_vpc_image_name}-${random_uuid.test.result}"
+  depends_on = ["ibm_is_image.f5_custom_image"]
+}
+
 output "custom_image_id" {
-  value       = "${ibm_is_image.f5_custom_image.id}"
+  value       = "${data.ibm_is_image.f5_custom_image.id}"
   description = "ID of the custom image copied"
 }
