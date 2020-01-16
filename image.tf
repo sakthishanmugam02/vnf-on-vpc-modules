@@ -56,4 +56,7 @@ data "ibm_is_image" "f5_custom_image" {
 output "custom_image_id" {
   value       = "${data.ibm_is_image.f5_custom_image.id}"
   description = "ID of the custom image copied"
+  depends_on = [
+    "data.ibm_is_image.f5_custom_image"
+  ]
 }
