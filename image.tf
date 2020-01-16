@@ -16,7 +16,7 @@ data "external" "authorize_policy_for_image" {
     roles                       = "Reader"
     target_resource_instance_id = "${var.vnf_cos_instance_id}"
     region                      = "${var.region}"
-    resource_group_id           = "${var.resource_group}"
+    resource_group_id           = "${var.resource_group_id}"
   }
 }
 
@@ -44,7 +44,7 @@ data "external" "delete_auth_policy_for_image" {
     id                   = "${lookup(data.external.authorize_policy_for_image.result, "id")}"
     ibmcloud_endpoint    = "${var.ibmcloud_endpoint}"
     ibmcloud_svc_api_key = "${var.ibmcloud_svc_api_key}"
-    region               = "${data.ibm_is_region.region.name}"
+    region               = "${var.resource_group_id}"
   }
 }
 
