@@ -44,7 +44,7 @@ data "external" "delete_auth_policy_for_image" {
     id                   = "${lookup(data.external.authorize_policy_for_image.result, "id")}"
     ibmcloud_endpoint    = "${var.ibmcloud_endpoint}"
     ibmcloud_svc_api_key = "${var.ibmcloud_svc_api_key}"
-    region               = "${var.resource_group_id}"
+    region               = "${var.region}"
   }
 }
 
